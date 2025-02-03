@@ -3,7 +3,7 @@ from .models import User, Post, Comment, Event
 
 class UserSerializer(serializers.ModelSerializer):
     is_verified_email = serializers.BooleanField(source='is_verified', read_only=True) # Add a read-only field to the serializer
-    user_name = serializers.CharField(source='username', read_only = True) # Rename the username field to user_name
+    user_name = serializers.CharField(source='username') # Rename the username field to user_name
     class Meta:
         model = User
         fields = ['id', 'user_name', 'email', 'created_at', 'is_verified_email']

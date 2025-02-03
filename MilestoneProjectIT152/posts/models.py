@@ -46,9 +46,12 @@ class Post(models.Model):
     category = models.CharField(choices=[('Tech','Tech'), ('Lifestyle', 'Lifestyle')], max_length=50, default='Tech') # The category of the post
     content = models.TextField()  # The text content of the post
     discount_percentage = models.IntegerField(default=0) # The discount percentage for the post
-    author = models.ForeignKey(User, on_delete=models.CASCADE)  # The user who created the post
+    author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)  # The user who created the post
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when the post was created
     is_published = models.BooleanField(default=False)  # Whether the post is published or not
+
+    def __str__(self):
+        return f"Post by {self.author.username} at {self.created_at}"
 
     def short_content(self):
         return self.content[:50] + '...' # Return the first 50 characters of the content
