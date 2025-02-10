@@ -12,6 +12,17 @@ from rest_framework.generics import RetrieveAPIView
 from .models import Comment, Post
 from .serializers import CommentSerializer, PostSerializer, UserSerializer
 
+
+from django.contrib.auth.models import User, Group
+from django.contrib.auth import authenticate, login
+
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsPostAuthor
+
+#TokenAuthentication
+from rest_framework.authentication import TokenAuthentication
+
+
 # Create your views here
 
 def get_users(request):
@@ -72,6 +83,10 @@ class UserListCreate(APIView):
     
     def post(self, request):
         serializer = UserSerializer(data=request.data)
+        serializer = User.objects.create_user(request.data['username'], request.data['password'])
+
+
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -102,3 +117,30 @@ class CommentListCreate(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class UserLogin(APIView):
+    def post(self, request):
+        data = request.data
+        user = authenticate(username=data['username'], password=data['password'])
+
+        if user is not None:
+            return Response({'message': 'Authentication successful'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+class PostDetailView(APIView):
+    permission_classes = [IsAuthenticated, IsPostAuthor]
+
+    def get(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        self.check_object_permissions(request, post)
+
+        return Response({'content': post.content})
+
+class ProtectedView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({'message': 'Authenticated'})
+    
