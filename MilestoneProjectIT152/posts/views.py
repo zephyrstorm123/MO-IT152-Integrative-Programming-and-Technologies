@@ -22,7 +22,16 @@ from .permissions import IsPostAuthor
 #TokenAuthentication
 from rest_framework.authentication import TokenAuthentication
 
+#Log events
+from singletons.logger_singleton import LoggerSingleton
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from factories.post_factory import PostFactory
+
+logger = LoggerSingleton.get_logger()
+logger.info('API Initialized Successfully')
 # Create your views here
 
 def get_users(request):
@@ -85,12 +94,11 @@ class UserListCreate(APIView):
         serializer = UserSerializer(data=request.data)
         serializer = User.objects.create_user(request.data['username'], request.data['password'])
 
-
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     
 class PostListCreate(APIView):
     def get(self, request):
@@ -144,3 +152,17 @@ class ProtectedView(APIView):
     def get(self, request):
         return Response({'message': 'Authenticated'})
     
+class CreatePostView(APIView):
+    def post(self, request):
+        data = request.data
+
+        try:
+            post = PostFactory.create_post(
+                post_type=data['post_type'],
+                title=data['title'],
+                content=data.get('content', ''),
+                metadata=data.get('metadata', {})
+            )
+            return Response({'message': 'Post created successfully!', 'post_id': post.id}, status=status.HTTP_201_CREATED)
+        except ValueError as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
