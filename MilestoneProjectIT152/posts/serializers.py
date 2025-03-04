@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Post, Comment, Event
+from .models import User, Post, Comment, Like
 
 class UserSerializer(serializers.ModelSerializer):
     is_verified_email = serializers.BooleanField(source='is_verified', read_only=True) # Add a read-only field to the serializer
@@ -14,6 +14,11 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Username already exists')
         return value
     
+class LikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Like
+        fields = ['id', 'user', 'post']
+        
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True) # Add a nested serializer for the author of the comment
 
@@ -32,3 +37,4 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ['id', 'title', 'category', 'content', 'discount_percentage', 'author', 'created_at', 'is_published', 'comments']
+

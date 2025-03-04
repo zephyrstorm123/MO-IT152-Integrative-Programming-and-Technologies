@@ -1,4 +1,4 @@
-from MilestoneProjectIT152.posts.models import Post
+from posts.models import Post
 
 class PostFactory:
 
