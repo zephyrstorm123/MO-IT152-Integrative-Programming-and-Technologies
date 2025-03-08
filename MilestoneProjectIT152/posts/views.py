@@ -21,7 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 from .permissions import IsPostAuthor
 
 #Authentication Imports
-from rest_framework.authentication import TokenAuthentication, BasicAuthentication, SessionAuthentication
+from rest_framework.authentication import TokenAuthentication, BasicAuthentication
 
 #Log events
 from singletons.logger_singleton import LoggerSingleton
@@ -162,19 +162,24 @@ class CreatePostView(APIView):
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
 class PostLikeView(APIView):
+    authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
 
     def post(self, request, id):
         post = get_object_or_404(Post, id=id)
-        like, created = Like.objects.get_or_create(post=post, user=request.user)
+        user = request.user
+
+        if not isinstance(user, User):
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        like, created = Like.objects.get_or_create(post=post, user=user)
         if not created:
             return Response({'message': 'You have already liked this post.'}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'message': 'Post liked successfully!'}, status=status.HTTP_201_CREATED)
 
 class PostCommentView(APIView):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [BasicAuthentication]
 
     def post(self, request, id):
         post = get_object_or_404(Post, id=id)
