@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <h3>Or login with:</h3>
+    <ul>
+        {% load socialaccount %}
+        {% providers_media_js %}
+        {% for provider in socialaccount_providers %}
+            <li><a href="{% provider_login_url provider.id %}">{{ provider.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

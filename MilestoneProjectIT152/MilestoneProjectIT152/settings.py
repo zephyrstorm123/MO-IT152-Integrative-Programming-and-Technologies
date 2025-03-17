@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
+    # 'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
 
@@ -65,7 +66,7 @@ ROOT_URLCONF = 'MilestoneProjectIT152.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'MilestoneProjectIT152', 'templates')],  # Correct path to the templates directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,8 +74,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'allauth.account.context_processors.account',
-                'allauth.socialaccount.context_processors.socialaccount',
+                # 'allauth.account.context_processors.account',
+                # 'allauth.socialaccount.context_processors.socialaccount',
             ],
         },
     },
@@ -174,8 +175,12 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT = '/'
+LOGIN_REDIRECT_URL = '/'         # Redirect after login
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'  
+ACCOUNT_EMAIL_REQUIRED = True   # Require email for registration
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Login with username/email
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
