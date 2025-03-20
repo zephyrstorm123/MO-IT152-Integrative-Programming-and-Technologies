@@ -2,9 +2,11 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from .models import User, Post
-import json
+import json, logging
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+
+import os
 
 from rest_framework.views import APIView 
 from rest_framework.response import Response
@@ -14,7 +16,7 @@ from .models import Comment, Post, Like
 from .serializers import CommentSerializer, PostSerializer, UserSerializer, LikeSerializer
 
 
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 
 from rest_framework.permissions import IsAuthenticated
@@ -31,7 +33,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from factories.post_factory import PostFactory
 
-logger = LoggerSingleton().get_logger()
+logger = logging.getLogger('posts')  # Get an instance of a logger
 logger.info('API Initialized Successfully')
 # Create your views here
 
@@ -103,6 +105,9 @@ class PostListCreate(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class CommentListCreate(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]
+
     def get(self, request):
         comments = Comment.objects.all()
         serializer = CommentSerializer(comments, many=True)
@@ -110,8 +115,11 @@ class CommentListCreate(APIView):
     
     def post(self, request):
         serializer = CommentSerializer(data=request.data)
+        logger.debug(f"Request user: {request.user}")  # Log the request.user
+        logger.debug(f"Request User ID: {request.user.id}")  # Log the request.user.id
+        
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -183,7 +191,11 @@ class PostCommentView(APIView):
 
     def post(self, request, id):
         post = get_object_or_404(Post, id=id)
+        logger.debug(f"Request user: {request.user}")  # Log the request.user
+        logger.debug(f"Request User ID: {request.user.id}")  # Log the request.user.id
+        logger.debug(f'Post: {id}')
         serializer = CommentSerializer(data=request.data)
+
         if serializer.is_valid():
             serializer.save(post=post, user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)

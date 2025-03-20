@@ -1,0 +1,294 @@
+DEBUG 2025-03-20 09:46:33,242 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 09:46:33,245 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 09:48:45,251 utils (0.015) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 09:48:45,254 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 09:48:58,265 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 09:48:58,630 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 09:48:58,631 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 09:48:58,632 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 01:48:58.632855') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 01:48:58.632855'); alias=default
+DEBUG 2025-03-20 10:13:21,109 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:13:21,112 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:13:22,304 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:13:22,306 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:13:22,641 utils (0.016) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 10:13:22,999 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 10:13:23,000 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 10:13:23,001 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 02:13:23.001833') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 02:13:23.001833'); alias=default
+DEBUG 2025-03-20 10:17:11,846 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:17:11,847 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:17:56,780 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:17:56,783 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:17:57,128 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 10:17:57,493 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 10:17:57,494 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 10:17:57,495 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 02:17:57.495860') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 02:17:57.495860'); alias=default
+DEBUG 2025-03-20 10:31:27,534 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:31:27,536 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:31:31,021 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 10:31:31,377 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 10:31:31,378 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 10:31:31,379 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 02:31:31.379751') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 02:31:31.379751'); alias=default
+DEBUG 2025-03-20 10:35:49,126 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:35:49,130 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:35:52,932 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 10:35:53,290 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 10:35:53,292 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 10:35:53,293 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 02:35:53.292139') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 02:35:53.292139'); alias=default
+DEBUG 2025-03-20 10:36:59,886 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:36:59,888 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:37:13,572 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 10:37:13,952 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 10:37:13,955 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 10:37:13,957 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 02:37:13.956523') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 02:37:13.956523'); alias=default
+DEBUG 2025-03-20 10:55:13,090 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:55:13,093 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 10:55:17,806 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 10:55:18,187 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 10:55:18,189 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 10:55:18,190 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 02:55:18.189881') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 02:55:18.189881'); alias=default
+INFO 2025-03-20 10:59:16,952 views API Initialized Successfully
+DEBUG 2025-03-20 10:59:17,006 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 10:59:17,009 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:06:28,486 views API Initialized Successfully
+DEBUG 2025-03-20 11:06:28,541 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:06:28,544 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:06:34,797 utils (0.016) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:06:35,160 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:06:35,162 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 11:06:35,163 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 03:06:35.162175') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 03:06:35.162175'); alias=default
+INFO 2025-03-20 11:10:34,497 views API Initialized Successfully
+DEBUG 2025-03-20 11:10:34,553 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:10:34,556 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:10:37,025 views API Initialized Successfully
+DEBUG 2025-03-20 11:10:37,079 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:10:37,081 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:10:43,213 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:10:43,585 views Request user: admin3
+DEBUG 2025-03-20 11:10:43,585 views Request User ID: 6
+DEBUG 2025-03-20 11:10:43,586 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:10:43,587 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 11:10:43,588 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, NULL, '2025-03-20 03:10:43.588184') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, None, '2025-03-20 03:10:43.588184'); alias=default
+INFO 2025-03-20 11:13:32,791 views API Initialized Successfully
+DEBUG 2025-03-20 11:13:32,851 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:13:32,853 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:13:35,299 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:14:29,197 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:14:29,574 utils (0.000) SELECT "posts_comment"."id", "posts_comment"."content", "posts_comment"."post_id", "posts_comment"."user_id", "posts_comment"."created_at" FROM "posts_comment"; args=(); alias=default
+DEBUG 2025-03-20 11:14:29,578 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:14:29,580 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:14:37,285 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:14:37,649 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post"; args=(); alias=default
+INFO 2025-03-20 11:15:14,657 views API Initialized Successfully
+DEBUG 2025-03-20 11:15:14,710 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:15:14,713 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:15:15,794 views API Initialized Successfully
+DEBUG 2025-03-20 11:15:15,848 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:15:15,851 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:17:16,467 views API Initialized Successfully
+DEBUG 2025-03-20 11:17:16,523 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:17:16,526 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:17:23,584 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:17:23,943 utils (0.000) SELECT "posts_comment"."id", "posts_comment"."content", "posts_comment"."post_id", "posts_comment"."user_id", "posts_comment"."created_at" FROM "posts_comment"; args=(); alias=default
+DEBUG 2025-03-20 11:17:23,946 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:17:23,948 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:17:28,756 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:17:29,118 views Request user: admin3
+DEBUG 2025-03-20 11:17:29,119 views Request User ID: 6
+DEBUG 2025-03-20 11:17:29,120 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:17:29,121 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+INFO 2025-03-20 11:17:41,363 views API Initialized Successfully
+DEBUG 2025-03-20 11:17:41,418 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:17:41,421 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:17:43,298 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:17:43,660 views Request user: admin3
+DEBUG 2025-03-20 11:17:43,660 views Request User ID: 6
+DEBUG 2025-03-20 11:17:43,662 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:17:43,663 utils (0.000) SELECT 1 AS "a" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 1; args=(1, 1); alias=default
+DEBUG 2025-03-20 11:17:43,665 utils (0.000) INSERT INTO "posts_comment" ("content", "post_id", "user_id", "created_at") VALUES ('This is a comment again', 1, 6, '2025-03-20 03:17:43.663527') RETURNING "posts_comment"."id"; args=('This is a comment again', 1, 6, '2025-03-20 03:17:43.663527'); alias=default
+DEBUG 2025-03-20 11:17:58,738 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:17:59,097 utils (0.000) SELECT "posts_comment"."id", "posts_comment"."content", "posts_comment"."post_id", "posts_comment"."user_id", "posts_comment"."created_at" FROM "posts_comment"; args=(); alias=default
+DEBUG 2025-03-20 11:17:59,099 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:17:59,100 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:17:59,101 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."id" = 6 LIMIT 21; args=(6,); alias=default
+DEBUG 2025-03-20 11:27:33,315 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:27:33,673 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:27:33,674 views Request user: admin3
+DEBUG 2025-03-20 11:27:33,674 views Request User ID: 6
+WARNING 2025-03-20 11:27:33,675 log Bad Request: /posts/1/comment/
+DEBUG 2025-03-20 11:29:44,995 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:29:45,353 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:29:45,354 views Request user: admin3
+DEBUG 2025-03-20 11:29:45,354 views Request User ID: 6
+WARNING 2025-03-20 11:29:45,355 log Bad Request: /posts/1/comment/
+INFO 2025-03-20 11:29:59,503 views API Initialized Successfully
+DEBUG 2025-03-20 11:29:59,564 utils (0.016) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:29:59,566 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:31:17,411 views API Initialized Successfully
+DEBUG 2025-03-20 11:31:17,464 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:31:17,466 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:31:17,800 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:31:18,173 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:31:18,173 views Request user: admin3
+DEBUG 2025-03-20 11:31:18,174 views Request User ID: 6
+INFO 2025-03-20 11:31:29,510 views API Initialized Successfully
+DEBUG 2025-03-20 11:31:29,563 utils (0.016) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:31:29,566 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:31:37,733 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:31:38,089 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:31:38,090 views Request user: admin3
+DEBUG 2025-03-20 11:31:38,090 views Request User ID: 6
+WARNING 2025-03-20 11:31:38,091 log Bad Request: /posts/1/comment/
+DEBUG 2025-03-20 11:34:12,862 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:34:13,230 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:34:13,230 views Request user: admin3
+DEBUG 2025-03-20 11:34:13,230 views Request User ID: 6
+WARNING 2025-03-20 11:34:13,231 log Bad Request: /posts/1/comment/
+INFO 2025-03-20 11:44:52,509 views API Initialized Successfully
+DEBUG 2025-03-20 11:44:52,563 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:44:52,566 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:45:04,606 views API Initialized Successfully
+DEBUG 2025-03-20 11:45:04,690 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:45:04,694 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:45:08,257 views API Initialized Successfully
+DEBUG 2025-03-20 11:45:08,312 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:45:08,315 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 11:45:59,644 views API Initialized Successfully
+DEBUG 2025-03-20 11:45:59,701 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:45:59,704 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:46:02,539 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:46:02,900 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:46:02,901 views Request user: admin3
+DEBUG 2025-03-20 11:46:02,902 views Request User ID: 6
+WARNING 2025-03-20 11:46:02,903 log Bad Request: /posts/1/comment/
+DEBUG 2025-03-20 11:46:04,757 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:46:05,116 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:46:05,117 views Request user: admin3
+DEBUG 2025-03-20 11:46:05,117 views Request User ID: 6
+WARNING 2025-03-20 11:46:05,118 log Bad Request: /posts/1/comment/
+INFO 2025-03-20 11:48:45,321 views API Initialized Successfully
+DEBUG 2025-03-20 11:48:45,391 utils (0.016) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 11:48:45,394 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-20 11:48:48,900 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 11:48:49,273 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 11:48:49,274 views Request user: admin3
+DEBUG 2025-03-20 11:48:49,274 views Request User ID: 6
+DEBUG 2025-03-20 11:48:49,275 views Post: 1
+WARNING 2025-03-20 11:48:49,276 log Bad Request: /posts/1/comment/
+INFO 2025-03-20 15:29:29,729 views API Initialized Successfully
+DEBUG 2025-03-20 15:29:29,787 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 15:29:29,789 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 15:29:31,001 views API Initialized Successfully
+DEBUG 2025-03-20 15:29:31,055 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 15:29:31,058 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 15:39:36,056 views API Initialized Successfully
+DEBUG 2025-03-20 15:39:36,111 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 15:39:36,114 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 15:44:26,643 views API Initialized Successfully
+DEBUG 2025-03-20 15:44:26,695 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 15:44:26,698 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+INFO 2025-03-20 15:44:27,868 views API Initialized Successfully
+DEBUG 2025-03-20 15:44:27,924 utils (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+DEBUG 2025-03-20 15:44:27,927 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+WARNING 2025-03-20 15:44:29,380 log Unauthorized: /posts/users/
+DEBUG 2025-03-20 15:44:43,924 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 15:44:44,295 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user"; args=(); alias=default
+DEBUG 2025-03-20 15:45:30,100 utils (0.000) SELECT "posts_user"."id", "posts_user"."password", "posts_user"."last_login", "posts_user"."is_superuser", "posts_user"."username", "posts_user"."email", "posts_user"."created_at", "posts_user"."is_active", "posts_user"."is_admin" FROM "posts_user" WHERE "posts_user"."username" = 'admin3' LIMIT 21; args=('admin3',); alias=default
+DEBUG 2025-03-20 15:45:30,467 utils (0.000) SELECT "posts_post"."id", "posts_post"."title", "posts_post"."category", "posts_post"."content", "posts_post"."discount_percentage", "posts_post"."author_id", "posts_post"."created_at", "posts_post"."is_published" FROM "posts_post" WHERE "posts_post"."id" = 1 LIMIT 21; args=(1,); alias=default
+DEBUG 2025-03-20 15:45:30,469 utils (0.000) SELECT "posts_like"."id", "posts_like"."post_id", "posts_like"."user_id" FROM "posts_like" WHERE ("posts_like"."post_id" = 1 AND "posts_like"."user_id" = 6) LIMIT 21; args=(1, 6); alias=default
+WARNING 2025-03-20 15:45:30,469 log Bad Request: /posts/1/like/

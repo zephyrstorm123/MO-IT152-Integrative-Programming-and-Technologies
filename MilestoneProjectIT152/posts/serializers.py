@@ -21,7 +21,7 @@ class LikeSerializer(serializers.ModelSerializer):
         
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True) # Add a nested serializer for the author of the comment
-
+    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all()) # Use a PrimaryKeyRelatedField to exclude the content of the post
     class Meta:
         model = Comment
         fields = ['id', 'content', 'post', 'created_at', 'user']
@@ -30,11 +30,17 @@ class CommentSerializer(serializers.ModelSerializer):
         #Check if referenced post exists
         if not Post.objects.filter(id=value.id).exists():
             raise serializers.ValidationError('Post does not exist')
-        return value 
+        return value
+    
+    # def create(self, validated_data):
+    #     user = self.context['request'].user  # Get user from request context
+    #     comment = Comment.objects.create(user=user, **validated_data)
+    #     return comment
+    
 class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True) # Add a nested serializer for comments
-
+    like_count = serializers.IntegerField(source='like_count', read_only=True) # Add a read-only field for the number of likes
     class Meta:
         model = Post
-        fields = ['id', 'title', 'category', 'content', 'discount_percentage', 'author', 'created_at', 'is_published', 'comments']
+        fields = ['id', 'title', 'category', 'content', 'discount_percentage', 'author', 'created_at', 'is_published', 'comments', 'like_count']
 
