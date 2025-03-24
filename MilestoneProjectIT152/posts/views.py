@@ -2,9 +2,11 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from .models import User, Post
-import json
+import json, logging
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+
+import os
 
 from rest_framework.views import APIView 
 from rest_framework.response import Response
@@ -14,11 +16,11 @@ from .models import Comment, Post, Like
 from .serializers import CommentSerializer, PostSerializer, UserSerializer, LikeSerializer
 
 
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 
 from rest_framework.permissions import IsAuthenticated
-from .permissions import IsPostAuthor
+from .permissions import IsPostAuthor, IsAdminUser
 
 #Authentication Imports
 from rest_framework.authentication import TokenAuthentication, BasicAuthentication
@@ -31,7 +33,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from factories.post_factory import PostFactory
 
-logger = LoggerSingleton().get_logger()
+from rest_framework.pagination import PageNumberPagination
+
+logger = logging.getLogger('posts')  # Get an instance of a logger
 logger.info('API Initialized Successfully')
 # Create your views here
 
@@ -81,15 +85,20 @@ class UserListCreate(APIView):
     
     def post(self, request):
         serializer = UserSerializer(data=request.data)
-        serializer = User.objects.create_user(request.data['username'], request.data['password'])
-
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            user = User.objects.create_user(
+                username=serializer.validated_data['username'],
+                password=serializer.validated_data['password']
+            )
+            return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    
+
+# url /posts/posts/
 class PostListCreate(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]
+
     def get(self, request):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
@@ -98,11 +107,14 @@ class PostListCreate(APIView):
     def post(self, request):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(author=request.user)  # Set the current user as the author
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class CommentListCreate(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]
+
     def get(self, request):
         comments = Comment.objects.all()
         serializer = CommentSerializer(comments, many=True)
@@ -110,8 +122,11 @@ class CommentListCreate(APIView):
     
     def post(self, request):
         serializer = CommentSerializer(data=request.data)
+        logger.debug(f"Request user: {request.user}")  # Log the request.user
+        logger.debug(f"Request User ID: {request.user.id}")  # Log the request.user.id
+        
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -177,21 +192,68 @@ class PostLikeView(APIView):
             return Response({'message': 'You have already liked this post.'}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'message': 'Post liked successfully!'}, status=status.HTTP_201_CREATED)
 
+
+#Url /posts/post/<int:id>/comment/ = allows the user to comment on the post with the given id
 class PostCommentView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [BasicAuthentication]
 
     def post(self, request, id):
         post = get_object_or_404(Post, id=id)
+        logger.debug(f"Request user: {request.user}")  # Log the request.user
+        logger.debug(f"Request User ID: {request.user.id}")  # Log the request.user.id
+        logger.debug(f'Post: {id}')
         serializer = CommentSerializer(data=request.data)
+
         if serializer.is_valid():
             serializer.save(post=post, user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#Url /posts/post/<int:id>/comments/ = shows all the comments for the certain post
 class PostCommentsListView(APIView):
     def get(self, request, id):
         post = get_object_or_404(Post, id=id)
         comments = Comment.objects.filter(post=post)
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
+
+# url /posts/feed/?page_size=X = shows the latest posts in chronological order with pagination
+class PostPaginationView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]
+
+
+    def get(self, request):
+        posts= Post.objects.all().order_by('-created_at')
+        paginator = PageNumberPagination()
+        paginator.page_size = request.GET.get('page_size', 5)
+        page = paginator.paginate_queryset(posts, request)
+
+        if page is not None:
+            serializer = PostSerializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
+        
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data)
+    
+class PostsSingleView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]
+
+    def get(self, request, id):
+        post = get_object_or_404(Post, id=id)
+        # if post.privacy == 'private' and post.author != request.user:
+        #     return Response({'message': 'You do not have permission to view this post.'}, status=status.HTTP_403_FORBIDDEN)
+        serializer = PostSerializer(post)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+# urls /posts/post/<int:id>/delete/
+class PostDeleteView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminUser]
+    authentication_classes = [BasicAuthentication]
+
+    def delete(self, request, id):
+        post = get_object_or_404(Post, id=id)
+        post.delete()
+        return Response({'message': 'Post deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
