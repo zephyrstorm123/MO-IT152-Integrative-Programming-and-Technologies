@@ -21,7 +21,7 @@ class LikeSerializer(serializers.ModelSerializer):
         
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True) # Add a nested serializer for the author of the comment
-    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all()) # Use a PrimaryKeyRelatedField to exclude the content of the post
+    post = serializers.PrimaryKeyRelatedField(read_only=True) # Use a PrimaryKeyRelatedField to exclude the content of the post
     class Meta:
         model = Comment
         fields = ['id', 'content', 'post', 'created_at', 'user']
@@ -39,8 +39,10 @@ class CommentSerializer(serializers.ModelSerializer):
     
 class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True) # Add a nested serializer for comments
-    like_count = serializers.IntegerField(source='like_count', read_only=True) # Add a read-only field for the number of likes
+    like_count = serializers.IntegerField(read_only=True) # Add a read-only field for the number of likes
+    author = UserSerializer(read_only=True) # Add a nested serializer for the author of the post
     class Meta:
         model = Post
-        fields = ['id', 'title', 'category', 'content', 'discount_percentage', 'author', 'created_at', 'is_published', 'comments', 'like_count']
+        fields = ['id', 'title', 'category', 'content', 'discount_percentage', 'author','created_at', 'is_published', 'comments', 'like_count']
+        read_only_fields = ['author']
 

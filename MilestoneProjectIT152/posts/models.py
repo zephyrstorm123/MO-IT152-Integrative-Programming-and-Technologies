@@ -34,6 +34,13 @@ class UserManage(BaseUserManager):
         return user
 
 class User(AbstractBaseUser, PermissionsMixin):
+    ROLE_CHOICES = [
+        ('admin', 'Admin'),
+        ('user', 'User')
+
+    ]
+    
+    
     username = models.CharField(
         max_length=50,
         validators=[
@@ -85,6 +92,11 @@ class Event(models.Model):
             raise ValidationError('End date must be after start date. Please adjust the dates') #Ensure that the end date is after the start date
 
 class Post(models.Model):
+    PRIVACY_CHOICES = [
+        ('public', 'Public'),
+        ('private', 'Private')
+    ]
+
     title = models.CharField(max_length=100, default='New Post')  # The title of the post
     category = models.CharField(choices=[('Tech','Tech'), ('Lifestyle', 'Lifestyle')], max_length=50, default='Tech') # The category of the post
     content = models.TextField()  # The text content of the post
@@ -111,10 +123,10 @@ class Post(models.Model):
             raise ValidationError('Lifestyle posts cannot have a discount percentage greater than 30%')
 
     def like_count(self):
-        return self.like.count() # Return the number of likes for the post
+        return self.likes.count() # Return the number of likes for the post
 
 class Like(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE) # The post that the like is for
+    post = models.ForeignKey(Post, related_name='likes', on_delete=models.CASCADE) # The post that the like is for
     user = models.ForeignKey(User, on_delete=models.CASCADE) # The user who liked the post
 
     class Meta:
