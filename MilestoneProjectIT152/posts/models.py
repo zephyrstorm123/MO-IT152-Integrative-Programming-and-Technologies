@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     ROLE_CHOICES = [
         ('admin', 'Admin'),
         ('user', 'User')
-
+        
     ]
     
     

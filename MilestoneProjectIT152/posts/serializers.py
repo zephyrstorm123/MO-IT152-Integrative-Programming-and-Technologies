@@ -4,9 +4,12 @@ from .models import User, Post, Comment, Like
 class UserSerializer(serializers.ModelSerializer):
     is_verified_email = serializers.BooleanField(source='is_verified', read_only=True) # Add a read-only field to the serializer
     user_name = serializers.CharField(source='username') # Rename the username field to user_name
+    password = serializers.CharField(write_only=True) # Add a write-only field for password
+    role = serializers.ChoiceField(choices=User.ROLE_CHOICES, default='user') # Add a field for user role
+    
     class Meta:
         model = User
-        fields = ['id', 'user_name', 'email', 'created_at', 'is_verified_email']
+        fields = ['id', 'user_name', 'email', 'created_at', 'is_verified_email', 'password'] # Include the new field in the serializer
 
     def validate_username(self, value):
         #Check if username is unique

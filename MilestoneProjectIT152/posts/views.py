@@ -78,21 +78,29 @@ def create_post(request):
             return JsonResponse({'error': str(e)}, status=400)
 
 class UserListCreate(APIView):
+    authentication_classes = [BasicAuthentication]
+
     def get(self, request):
+        # Only authenticated users can view the list of users
+        if not request.user.is_authenticated:
+            return Response({'error': 'Authentication required'}, status=status.HTTP_401_UNAUTHORIZED)
+        
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
     
     def post(self, request):
+        # Allow unauthenticated users to register
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = User.objects.create_user(
                 username=serializer.validated_data['username'],
-                password=serializer.validated_data['password']
+                password=serializer.validated_data['password'],
+                email=serializer.validated_data['email'],
+                role=serializer.validated_data.get('role', 'user')  # Default to 'user' if not provided,
             )
             return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
 
 # url /posts/posts/
 class PostListCreate(APIView):
@@ -228,8 +236,12 @@ class PostPaginationView(APIView):
         posts= Post.objects.all().order_by('-created_at')
         paginator = PageNumberPagination()
         paginator.page_size = request.GET.get('page_size', 5)
-        page = paginator.paginate_queryset(posts, request)
+        
+        #Invalid output if pagesize invalid
+        if not isinstance(paginator.page_size, int):
+            return Response({'message': 'Invalid page size'}, status=status.HTTP_400_BAD_REQUEST)
 
+        page = paginator.paginate_queryset(posts, request)
         if page is not None:
             serializer = PostSerializer(page, many=True)
             return paginator.get_paginated_response(serializer.data)
@@ -243,8 +255,9 @@ class PostsSingleView(APIView):
 
     def get(self, request, id):
         post = get_object_or_404(Post, id=id)
-        # if post.privacy == 'private' and post.author != request.user:
-        #     return Response({'message': 'You do not have permission to view this post.'}, status=status.HTTP_403_FORBIDDEN)
+        if post.privacy == 'private' and post.author != request.user and request.user.role != 'admin':
+            # Check if the user is not the author and not an admin
+            return Response({'message': 'You do not have permission to view this post.'}, status=status.HTTP_403_FORBIDDEN)
         serializer = PostSerializer(post)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
